@@ -65,7 +65,7 @@ const Partners = () => {
       Description: "Partner",
     },
      {
-      src: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5e3zzmcbsfjzy.png",
+      src: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmdvy55e8.webp",
       name: "Milind Apte",
       Description: "Partner",
        style: "padding: 0.5rem;",

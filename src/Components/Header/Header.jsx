@@ -82,7 +82,7 @@ const Header = () => {
                     >
                       <Menu as="div" className="relative inline-block text-left">
                         <div>
-                          <MenuButton className="inline-flex w-full padding_menu justify-center text-da items-center gap-x-1.5 rounded-md text-white shadow-sm">
+                          <MenuButton className="inline-flex w-full padding_menu justify-center text-da items-center gap-x-1.5 rounded-md text-dark">
                             OUR PROJECTS
                             <ChevronDownIcon
                               aria-hidden="true"
@@ -199,7 +199,7 @@ const Header = () => {
     href="https://neoliv.in/esg/"
     target="_blank"
     rel="noopener noreferrer"
-    className="text-white hover:text-blue-700 duration-500"
+    className="text-dark hover:text-blue-700 duration-500"
   >
      ESG
   </a>
@@ -232,7 +232,7 @@ const Header = () => {
           >
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <MenuButton className="inline-flex w-full padding_menu justify-center gap-x-1.5 rounded-md shadow-sm">
+                <MenuButton className="inline-flex w-full padding_menu justify-center gap-x-1.5 rounded-md ">
                   NEOLIV CAPITAL ADVISORY
                   <ChevronDownIcon
                     aria-hidden="true"

@@ -5,7 +5,7 @@ import PMSDiscloureDocument from "../../Assets/pdf/PMSDiscloureDocument.pdf";
 import InvestorComplaints from "../../Assets/pdf/InvestorComplaints.pdf";
 import CommonSOPforreporting from "../../Assets/pdf/CommonSOPforreportingthedemiseofaninvestor.pdf";
 import SEBICircularonODR from "../../Assets/pdf/SEBICircularonODR.pdf";
-import FinalRevisedNeolivPMSillustration280125 from "../../Assets/pdf/FeesCalculationTool.xlsx";
+import FinalRevisedNeolivPMSillustration280125 from "../../Assets/pdf/FeesCalculation080825.xlsx";
 import ContactModal from "../../Components/ContactModal";
 import FileViewer from './FileViewer';
 
