@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import pdfFileinvestor from "../../Assets/pdf/InvestorCharter.pdf";
+import CoPmsUpiModal from "../CoPmsUpiModal";
 
 const Headercopy = () => {
   let [isOpen, SetisOpen] = useState(false);
@@ -59,10 +60,13 @@ const Headercopy = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute menulist bg-neutral-950 md:bg-transparent md:static md:z-auto z-20 desktop_ul left-0 w-full md:w-auto md:pl-0 pl-8 lg:font-extrabold me-8 transition-all duration-500 ease-out ${
-            isOpen ? "top-[6rem]" : "top-[-490px]"
-          }`}
-        >
+  className={`md:flex md:items-center md:pb-0 pb-12 absolute menulist bg-neutral-950 md:bg-transparent md:static md:z-auto z-20 desktop_ul left-0 w-full md:w-auto md:pl-0 pl-8 lg:font-extrabold me-8 transition-all duration-500 ease-out ${
+    isOpen
+      ? "top-[6rem] h-[100vh]"       // 👈 Added full screen height when open
+      : "top-[-490px] h-auto"        // 👈 Normal when closed
+  }`}
+>
+
           <li
             className={`md:ml-6 md:my-0 my-7 font-medium tracking-wide ${
               isOpen ? "block" : "hidden md:block"
@@ -279,8 +283,12 @@ const Headercopy = () => {
                             Investor Login
                           </NavLink>
                         </MenuItem>
+                        <MenuItem>
+                          <CoPmsUpiModal qrImage="https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmg6hqbv1.webp" />
+                        </MenuItem>
                       </div>
                     </MenuItems>
+                    
                   </Menu>
                 </div>
               </MenuItems>
