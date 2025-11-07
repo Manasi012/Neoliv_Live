@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ imageUrl, description, buttonText, onClick }) => {
+const Card = ({ imageUrl, description, buttonText, newsUrl, onClick }) => {
 
   return (
     <div

@@ -9,11 +9,36 @@ import pdfFile11 from '../../Assets/video/MM_TV18.mp4';
 import pdfFile13 from '../../Assets/pdf/UpdatedPressReleaseReport_NeoLiv.pdf';
 import pdfFile14 from '../../Assets/pdf/Alibaug_Pdf.pdf';
 import pdfFilePR from '../../Assets/pdf/FinalPressreleasereport.pdf';
+import pdfFileArticle1 from '../../Assets/pdf/NeoLivRs600crProject.pdf';
+import pdfFileArticle2 from '../../Assets/pdf/Real-estate-startup.pdf';
 
 
 
 
 const cardData = [
+    {
+    description: "NeoLiv inks management agreement for 47-acre mixed-use villa project in Khopoli, near Mumbai",
+    imageUrl: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+    buttonText: "News",
+    newsUrl: "https://www.hindustantimes.com/real-estate/neoliv-inks-management-agreement-for-47-acre-mixed-use-villa-project-in-khopoli-near-mumbai-101757578772374.html#google_vignette"
+  },
+
+   {
+    description: "About Rs. 600 cr project in Khopoli",
+    imageUrl:
+      "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+    buttonText: "News",
+    pdfUrl: pdfFileArticle1,
+  },
+
+  {
+    description: "Real estate startup Neoliv plots ₹1,000 crore sales in first year of operations",
+    imageUrl:
+      "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+    buttonText: "News",
+    pdfUrl: pdfFileArticle2,
+  },
+
     {
     description: "NeoLiv sells all residential plots in Hariyana project, generetes over Rs 300 crore in revenue",
     imageUrl:
@@ -79,11 +104,14 @@ const cardData = [
 function News() {
   const [selectedUrl, setSelectedUrl] = useState(null);
 
-  const handleCardClick = (pdfUrl, iframeUrl) => {
-    // Open the PDF URL if it exists, otherwise open the iframe URL
-    window.open(pdfUrl ? pdfUrl : iframeUrl, "_blank");
-    setSelectedUrl(pdfUrl ? pdfUrl : iframeUrl);
-  };
+  const handleCardClick = (pdfUrl, iframeUrl, newsUrl) => {
+  // Priority: newsUrl > pdfUrl > iframeUrl
+  const urlToOpen = newsUrl || pdfUrl || iframeUrl;
+  if (urlToOpen) {
+    window.open(urlToOpen, "_blank");
+    setSelectedUrl(urlToOpen);
+  }
+};
 
   const CustomPrevArrow = ({ onClick }) => (
     <div className="hidden md:block">
@@ -179,7 +207,7 @@ function News() {
               description={card.description}
               imageUrl={card.imageUrl}
               buttonText={card.buttonText}
-              onClick={() => handleCardClick(card.pdfUrl, card.iframeUrl)} // Pass both URLs to the click handler
+              onClick={() => handleCardClick(card.pdfUrl, card.iframeUrl, card.newsUrl)} // Pass both URLs to the click handler
             />
           </div>
         ))}

@@ -1,8 +1,8 @@
 import React from "react";
 import Bluelogo from "../../Assets/imgs/neoliv_logo_blue.png";
 import LocationIcon from "../../Assets/imgs/locationicon.png";
-// import HorizontalForm from "../Form/HorizontalForm";
-// import Auth from "../Form/Auth";
+import HorizontalForm from "../Form/HorizontalForm";
+import Auth from "../Form/Auth";
 
 const Footer = () => {
   return (
@@ -30,20 +30,21 @@ const Footer = () => {
         </div>
         <hr className="md:mx-32 mx-10 mt-12 md:mt-0 md:me-40" />
 
-        {/* <div className="text-white flex md:justify-start justify-center md:pt-5 pt-20">
+        <div className="text-white flex md:justify-start justify-center md:pt-5 pt-20">
           <div
             className="md:ml-32"
             data-aos="fade-down"
             data-aos-delay="500"
             data-aos-duration="1000"
           >
-            <h3 className="text-2xl md:pb-0 pb-10">Get More Information</h3>
+            <h3 className="text-2xl md:pb-0 pb-10">Plots in Gated Township</h3>
           </div>
-        </div> */}
+        </div>
 
-        {/* <HorizontalForm /> */}
+        <HorizontalForm />
 
         {/* <Auth /> */}
+      
 
         <div className="text-white flex md:justify-start justify-center md:pt-5 pt-20">
           <div

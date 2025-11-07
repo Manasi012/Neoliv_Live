@@ -21,6 +21,7 @@ import { Feescalculation } from "./Pages/FeesCalcuation/Feescalculation";
 import { UpcomingLaunches } from "./Pages/UpcomingLaunches";
 import FeesCalculationTool from "./Pages/FeesCalcuation/FeesCalculationTool";
 import IntroVideo from "./Components/IntroVideo";
+import ContactFlap from "./Components/ContactFlap";
 
 
 
@@ -35,6 +36,7 @@ function App() {
       <ModalDisclaimer />
       <IntroVideo />
       <ScrollToTopOnPageChange />
+      <ContactFlap />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sustainability" element={<Sustainability />} />

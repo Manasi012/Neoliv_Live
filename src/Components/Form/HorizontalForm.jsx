@@ -111,30 +111,92 @@ const HorizontalForm = () => {
     }
     setIsVerifyingOtp(false);
   };
+const trackGoogleAdsConversion = () => {
+    if (window.gtag) {
+      // Fire the specific conversion pixel
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17689581194/9adRCKXSxrYbEIqthvNB'
+      });
+      console.log('Google Ads conversion tracked: AW-17689581194/9adRCKXSxrYbEIqthvNB');
+    } else {
+      console.warn('Google Ads gtag not available');
+    }
+  };
 
   const handleSubmit = async () => {
-    try {
-      const cleanedMobile = formData.mobile.trim();
-      const submissionData = {
+  try {
+    const cleanedMobile = formData.mobile.trim();
+    const submissionData = {
+      ...formData,
+      mobile: cleanedMobile.startsWith("91")
+        ? cleanedMobile.slice(2)
+        : cleanedMobile,
+    };
+
+    // Multiple webhook endpoints
+    const webhookUrls = [
+      "https://hook.eu1.make.com/ln1s5rr8igxy1ni3a744t2i3ppqb41kn", // Original webhook
+      "https://hook.eu1.make.com/wsoywka5au8u099ed9wzgck8ymudgzsc"  // New webhook for PS team
+    ];
+
+    // Send data to multiple webhooks
+    const webhookPromises = webhookUrls.map(url =>
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+      })
+    );
+
+    const responses = await Promise.all(webhookPromises);
+    const allSuccessful = responses.every(response => response.ok);
+
+    if (allSuccessful) {
+      toast.success("Form submitted successfully!");
+
+      // ✅ Fire Taboola Pixel here
+      if (window._tfa) {
+        window._tfa.push({ notify: 'event', name: 'lead', id: 1213114 });
+        console.log("✅ Taboola Pixel (lead event) fired successfully!");
+      } else {
+        console.warn("⚠️ Taboola Pixel (_tfa) not found on window object");
+      }
+
+      // ✅ (Optional) Fire Google Ads conversion too
+      trackGoogleAdsConversion();
+
+      setFormData({
         ...formData,
-        mobile: cleanedMobile.startsWith("91")
-          ? cleanedMobile.slice(2)
-          : cleanedMobile,
-      };
-
-      const response = await fetch(
-        "https://hook.eu1.make.com/ln1s5rr8igxy1ni3a744t2i3ppqb41kn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(submissionData),
+        name: "",
+        email: "",
+        mobile: "",
+        configuration: "",
+        whatsappOptIn: true,
+      });
+      setIsOtpSent(false);
+      setIsOtpVerified(false);
+      setOtp("");
+    } else {
+      const failedWebhooks = [];
+      responses.forEach((response, index) => {
+        if (!response.ok) {
+          failedWebhooks.push(`Webhook ${index + 1}`);
         }
-      );
+      });
 
-      if (response.ok) {
-        toast.success("Form submitted successfully!");
+      if (failedWebhooks.length === responses.length) {
+        toast.error("Failed to submit form to all webhooks. Please try again.");
+      } else {
+        toast.warning(`Form submitted successfully, but ${failedWebhooks.join(', ')} failed.`);
+
+        // Still fire pixel if at least one succeeded
+        if (window._tfa) {
+          window._tfa.push({ notify: 'event', name: 'lead', id: 1213114 });
+          console.log("✅ Taboola Pixel fired (partial success)");
+        }
+
         setFormData({
           ...formData,
           name: "",
@@ -146,17 +208,98 @@ const HorizontalForm = () => {
         setIsOtpSent(false);
         setIsOtpVerified(false);
         setOtp("");
-      } else {
-        toast.error("Failed to submit form. Please try again.");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("An error occurred. Please try again later.");
     }
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    toast.error("An error occurred. Please try again later.");
+  }
+};
+
+
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     const cleanedMobile = formData.mobile.trim();
+  //     const submissionData = {
+  //       ...formData,
+  //       mobile: cleanedMobile.startsWith("91")
+  //         ? cleanedMobile.slice(2)
+  //         : cleanedMobile,
+  //     };
+
+  //     // Multiple webhook endpoints
+  //     const webhookUrls = [
+  //       "https://hook.eu1.make.com/ln1s5rr8igxy1ni3a744t2i3ppqb41kn", // Original webhook
+  //       "https://hook.eu1.make.com/wsoywka5au8u099ed9wzgck8ymudgzsc"  // New webhook
+  //     ];
+
+  //     // Send data to multiple webhooks using Promise.all for parallel execution
+  //     const webhookPromises = webhookUrls.map(url =>
+  //       fetch(url, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(submissionData),
+  //       })
+  //     );
+
+  //     const responses = await Promise.all(webhookPromises);
+      
+  //     // Check if all webhooks were successful
+  //     const allSuccessful = responses.every(response => response.ok);
+      
+  //     if (allSuccessful) {
+  //       toast.success("Form submitted successfully to all webhooks!");
+  //       setFormData({
+  //         ...formData,
+  //         name: "",
+  //         email: "",
+  //         mobile: "",
+  //         configuration: "",
+  //         whatsappOptIn: true,
+  //       });
+  //       setIsOtpSent(false);
+  //       setIsOtpVerified(false);
+  //       setOtp("");
+  //     } else {
+  //       // Check which webhooks failed
+  //       const failedWebhooks = [];
+  //       responses.forEach((response, index) => {
+  //         if (!response.ok) {
+  //           failedWebhooks.push(`Webhook ${index + 1}`);
+  //         }
+  //       });
+        
+  //       if (failedWebhooks.length === responses.length) {
+  //         toast.error("Failed to submit form to all webhooks. Please try again.");
+  //       } else {
+  //         toast.warning(`Form submitted successfully, but ${failedWebhooks.join(', ')} failed.`);
+  //         // Still reset form if at least one webhook succeeded
+  //         setFormData({
+  //           ...formData,
+  //           name: "",
+  //           email: "",
+  //           mobile: "",
+  //           configuration: "",
+  //           whatsappOptIn: true,
+  //         });
+  //         setIsOtpSent(false);
+  //         setIsOtpVerified(false);
+  //         setOtp("");
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //     toast.error("An error occurred. Please try again later.");
+  //   }
+  // };
+
+
 
   return (
-    <div className="flex justify-center items-center md:mx-32 mx-10 my-0 md:mt-5">
+    <div id="contact-form" className="flex justify-center items-center md:mx-32 mx-10 my-0 md:mt-5">
       <form className="w-full p-4 rounded-lg shadow-md" onSubmit={handleSubmit}>
         <div className="flex flex-wrap -mx-4 pb-10">
           {/* Left Column */}
@@ -259,7 +402,7 @@ const HorizontalForm = () => {
               </Menu.Button>
               <Menu.Items className="absolute right-0 z-10 mt-2 w-full font-medium origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                 <div className="py-1">
-                  {["Plot", "Apartment", "Villa", "Commercial", "Floor"].map(
+                  {["Residential Township Plots", "Residential villas"].map(
                     (item) => (
                       <Menu.Item key={item}>
                         {({ active }) => (

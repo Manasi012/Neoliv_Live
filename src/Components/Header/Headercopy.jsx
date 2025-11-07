@@ -5,6 +5,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import pdfFileinvestor from "../../Assets/pdf/InvestorCharter.pdf";
 import CoPmsUpiModal from "../CoPmsUpiModal";
+import VigilanceAwarenessModal from "../VigilanceAwarenessModal";
 
 const Headercopy = () => {
   let [isOpen, SetisOpen] = useState(false);
@@ -285,6 +286,10 @@ const Headercopy = () => {
                         </MenuItem>
                         <MenuItem>
                           <CoPmsUpiModal qrImage="https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmg6hqbv1.webp" />
+                        </MenuItem>
+
+                        <MenuItem className="text-center">
+                          <VigilanceAwarenessModal />
                         </MenuItem>
                       </div>
                     </MenuItems>

@@ -4,6 +4,8 @@ import { HashLink } from "react-router-hash-link";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { NavLink } from "react-router-dom";
+import VigilanceAwarenessModal from "../VigilanceAwarenessModal";
+
 // import InvestorComplaint from "../../Assets/pdf/InvestorComplaint.pdf";
 import { Margin } from "@mui/icons-material";
 
@@ -273,6 +275,10 @@ const Header = () => {
                             Investor Login
                           </NavLink>
                         </MenuItem>
+
+                         <MenuItem>
+                                                  <vigilanceAwarenessModal />
+                                                </MenuItem>
                         
                       </div>
                     </MenuItems>

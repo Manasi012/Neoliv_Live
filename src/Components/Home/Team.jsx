@@ -22,7 +22,7 @@ const Team = () => {
       </div>
       <div className="flex flex-col md:flex-row md:mx-52 tab_margin pt-10 md:px-0 px-4">
         <div
-          className="md:w-1/2  z-40"
+          className="md:w-1/2  md:z-40 z-0"
           data-aos="fade-down"
           data-aos-delay="500"
           data-aos-duration="1000"
@@ -30,7 +30,7 @@ const Team = () => {
           <img src={Mohit} alt="mohit" className="md:w-3/4 w-full rounded-xl" />
         </div>
         <div
-          className="md:w-5/6 md:rounded-xl z-10 py-16 px-10 md:pl-40 -mt-4 bg_indigo md:mt-44 md:-ml-56 text-white"
+          className="md:w-5/6 md:rounded-xl md:z-10 z-0 py-16 px-10 md:pl-40 -mt-4 bg_indigo md:mt-44 md:-ml-56 text-white"
           data-aos="fade-up"
           data-aos-delay="600"
           data-aos-duration="1000"
@@ -48,7 +48,7 @@ const Team = () => {
 
       <div className="flex flex-col md:flex-row md:mx-52 md:py-24 pt-10 tab_margin tab_left">
         <div
-          className="md:w-1/2 p-12 bg-blue-950 -ml-4 space-y-9 z-20 text-white rounded-l-2xl"
+          className="md:w-1/2 p-12 bg-blue-950 -ml-4 space-y-9 text-white rounded-l-2xl"
           data-aos="fade-left"
           data-aos-delay="500"
           data-aos-duration="1000"
@@ -91,7 +91,7 @@ const Team = () => {
         </div>
 
         <div
-          className="md:w-1/2 p-12 bg-white border border-indigo-300 shadow-lg md:z-20 z-10 -ml-4 space-y-9 text-blue-950"
+          className="md:w-1/2 p-12 bg-white border border-indigo-300 shadow-lg md:z-20 z-0 -ml-4 space-y-9 text-blue-950"
           data-aos="fade-right"
           data-aos-delay="500"
           data-aos-duration="1000"

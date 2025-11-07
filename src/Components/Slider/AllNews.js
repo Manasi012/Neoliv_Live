@@ -18,10 +18,35 @@ import pdfFile12 from '../../Assets/pdf/NeoLiv_Tracking.pdf';
 import pdfFile13 from '../../Assets/pdf/UpdatedPressReleaseReport_NeoLiv.pdf';
 import pdfFile14 from '../../Assets/pdf/Alibaug_Pdf.pdf';
 import pdfFilePR from '../../Assets/pdf/FinalPressreleasereport.pdf';
+import pdfFileArticle1 from '../../Assets/pdf/NeoLivRs600crProject.pdf';
+import pdfFileArticle2 from '../../Assets/pdf/Real-estate-startup.pdf';
 
 
 
 const newsData = [
+        {
+    description: "NeoLiv inks management agreement for 47-acre mixed-use villa project in Khopoli, near Mumbai",
+    imageUrl: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+    buttonText: "News",
+    newsUrl: "https://www.hindustantimes.com/real-estate/neoliv-inks-management-agreement-for-47-acre-mixed-use-villa-project-in-khopoli-near-mumbai-101757578772374.html#google_vignette"
+  },
+
+  {
+      description: "About Rs. 600 cr project in Khopoli",
+      imageUrl:
+        "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+      buttonText: "News",
+      pdfUrl: pdfFileArticle1,
+    },
+  
+    {
+      description: "Real estate startup Neoliv plots ₹1,000 crore sales in first year of operations",
+      imageUrl:
+        "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+      buttonText: "News",
+      pdfUrl: pdfFileArticle2,
+    },
+
   {
       description: "NeoLiv sells all residential plots in Hariyana project, generetes over Rs 300 crore in revenue",
       imageUrl:
@@ -85,7 +110,7 @@ const newsData = [
 function AllNews() {
   const [selectedUrl, setSelectedUrl] = useState(null);
 
-  const handleCardClick = (pdfUrl, iframeUrl, imageUrl) => {
+  const handleCardClick = (pdfUrl, iframeUrl, imageUrl, newsUrl) => {
     if (pdfUrl) {
       // If PDF URL exists, open it in a new tab
       window.open(pdfUrl, "_blank");
@@ -193,7 +218,7 @@ function AllNews() {
               description={card.description}
               imageUrl={card.imageUrl}
               buttonText={card.buttonText}
-              onClick={() => handleCardClick(card.pdfUrl, card.iframeUrl)}
+              onClick={() => handleCardClick(card.pdfUrl, card.iframeUrl, card.newsUrl)} // Pass both URLs to the click handler
             />
           </div>
         ))}
