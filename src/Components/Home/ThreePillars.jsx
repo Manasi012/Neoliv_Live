@@ -40,7 +40,7 @@ const ThreePillars = () => {
                       Properties)
                     </li>
                     <li>
-                      100+ <span className="tab_span1">years</span> cumulative
+                      150+ <span className="tab_span1">years</span> cumulative
                       experience
                     </li>
                     <li>Equity Partnership for Key Management</li>

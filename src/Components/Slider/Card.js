@@ -4,7 +4,7 @@ const Card = ({ imageUrl, description, buttonText, newsUrl, onClick }) => {
 
   return (
     <div
-      className="max-w-sm cursor-pointer md:h-[19rem] h-[18rem] rounded  overflow-hidden shadow-lg relative"
+      className="max-w-sm cursor-pointer md:h-[19rem] h-[19rem] rounded  overflow-hidden shadow-lg relative"
       onClick={onClick}
       data-aos="zoom-in"
       data-aos-delay="800"

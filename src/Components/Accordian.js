@@ -46,7 +46,7 @@ const Accordion = () => {
                 Founded by Mohit Malhotra former MD & CEO of Godrej Properties
                 </li>
                 <li>
-                100+ years cumulative experience
+                150+ years cumulative experience
                 </li>
                 <li>
                 Equity partnership for key management

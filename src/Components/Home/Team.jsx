@@ -84,7 +84,7 @@ const Team = () => {
               data-aos-delay="1700"
               data-aos-duration="1000"
             >
-              9 equity partners with vast industry experience in the business
+              10 equity partners with vast industry experience in the business
               to date.
             </li>
           </ul>
@@ -118,7 +118,7 @@ const Team = () => {
             >
               The platform has secured funding from UHNI family offices and 360
               ONE - India’s leading wealth management firm with more
-              than USD 50 Bn AUM
+              than USD 65 Bn AUM
             </li>
             <li
               data-aos="fade-up"

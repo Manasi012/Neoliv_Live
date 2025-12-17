@@ -83,7 +83,7 @@ const ProfessionallyBuilt = () => {
         <div className="text-center md:py-16 py-6 space-y-4 px-5">
           <h3 className="text-4xl text-blue-950">Professionally Built</h3>
           <p className="text-lg font-medium">
-            The team that comes with a 100+ years of multi-functional industry
+            The team that comes with a 150+ years of multi-functional industry
             experience
           </p>
         </div>
